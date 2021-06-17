@@ -8,14 +8,14 @@ export default function CreatePost() {
 
   const [user , setUser] = useContext(UserContext).user
   const [caption , setCaption] = useState("")
-  const [image , setImage] = useState("")
-  const [progress , setProgress] = useState(0)
+  
 
   console.log(caption)
 
   const handleChange = (e) => {
     if(e.target.files[0]){
-      setImage(e.target.files[0])
+      // setImage(e.target.files[0])
+      return 0
     }
     var selectedURL = URL.createObjectURL(e.target.files[0])
     var imagePreview = document.getElementById('image-preview')
@@ -24,18 +24,23 @@ export default function CreatePost() {
   }
 
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     
     if(caption){
 
-    alert("post added successfully!")
+    
       
-    return db.collection("posts").add({
+    await db.collection("posts").add({
             timestamp : firebase.firestore.FieldValue.serverTimestamp(),
             caption : caption , 
             // imageUrl : null,
-            username : user.displayName.split(" ")[0]
+            username : user.email.replace("@gmail.com" , "")
           })
+    
+    await setCaption(" ")
+
+
+    alert("post added successfully!");
           
           
     }

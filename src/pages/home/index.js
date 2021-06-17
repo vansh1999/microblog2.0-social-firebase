@@ -1,6 +1,6 @@
 import React from 'react';
 import SignInBtn from '../../components/signin-btn';
-import { CreatePost } from '../../containers';
+import { CreatePost, Feed, Post } from '../../containers';
 import Navbar from '../../containers/navbar';
 
 export default function Home() {
@@ -15,6 +15,12 @@ export default function Home() {
         <hr/>
 
       <CreatePost/>
+
+        <br/>
+        
+        <hr/>
+
+        <Feed/> 
         
     </>
   );

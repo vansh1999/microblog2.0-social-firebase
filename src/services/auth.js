@@ -23,6 +23,7 @@ export const logout = async () => {
 		.then(() => {
 			logout_success = true;
 			console.log('signout successfully');
+			window.location.reload();
 		})
 		.catch(error => {
 			console.log(error.message);
